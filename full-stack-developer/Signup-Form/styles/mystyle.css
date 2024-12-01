@@ -1,0 +1,124 @@
+/* * {
+    box-sizing: border-box;
+
+} */
+
+body {
+    margin: 0;
+    background: steelblue;
+    text-align: center;
+    font-size: 1.5rem;
+    color: white
+
+}
+
+.global-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* LEFT PANE */
+
+.left-pane-container {
+    display: flex;
+    margin: 0;
+    width: 33%;
+    background-size: cover;
+    background-image: url(../static/Forest.jpg);
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.left-pane-container h1 {
+   background-color: rgba(0,0,0, .5);
+   width: 100%
+}
+
+
+
+ /* RIGHT PANE */
+.right-pane-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 100%;
+    color: black;
+    background-color: rgb(241, 241, 241);
+    
+}
+
+.right-pane-flex-container-group-div-1 {
+    height: 100%;
+    width: 58%;
+    text-align: left;
+    margin: 0
+    /* justify-content: center;
+    align-items: center;
+    display: flex; */
+}
+
+
+.right-pane-flex-container-group-div-3 {
+    height: 100%;
+    text-align: left;
+    align-items: left;
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem
+}
+
+.right-pane-flex-container-group-div-3 button {
+    font-size: 2rem;
+    align-content: left;
+    margin-right: 20rem;
+    background-color: #579148;
+    border-radius: 10px;
+    height: 4rem;
+    width: 20rem;
+    border: 0;
+}
+
+.right-pane-flex-container-group-div-3 button:active {
+    background-color: #26501c;
+}
+
+
+
+/* DIV CONTAINER GROUP 1 */
+
+.right-pane-flex-container-group-div-2 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    height: 100%;
+    text-indent: 1rem;
+    text-align: left;
+}
+.right-pane-grid-container-form-group {
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    grid-row-gap: 1rem;
+}
+
+.form-formating {
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    padding: 1rem;
+}
+
+.form-formating label {
+    text-align: left;
+}
+
+.form-formating input {
+    width: 100%;
+    height: 1.5rem;
+    border-radius: .5rem;
+}
+
+.form-formating input:focus {
+    outline: 2px solid rgba(12, 23, 172, 0.288);
+}
+
+
