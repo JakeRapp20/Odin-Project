@@ -7,11 +7,11 @@
 function checkInput(choice) {
 
 
-    if (choice == "rock") {
+    if (choice === "rock") {
         return "rock";
-    } else if (choice == "paper") {
+    } else if (choice === "paper") {
         return "paper";
-    } else if (choice == "scissor") {
+    } else if (choice === "scissor") {
         return "scissor";
     } else {
         return alert("Please select rock paper or scissors");
@@ -24,11 +24,11 @@ function checkInput(choice) {
 function calculateComputerChoice() {
     let randomSelectedChoice = Math.floor(Math.random() * 3);
     console.log("Random: " + randomSelectedChoice)
-    if (randomSelectedChoice == 0) {
+    if (randomSelectedChoice === 0) {
         return "rock";
-    } else if (randomSelectedChoice == 1) {
+    } else if (randomSelectedChoice === 1) {
         return "paper";
-    } else if (randomSelectedChoice == 2) {
+    } else if (randomSelectedChoice === 2) {
         return "scissor";
     } else {
         return "Something went wrong";
@@ -42,37 +42,37 @@ function calculateComputerChoice() {
 function playGame(userChoice, computerChoice) {
     let evaluatedUserChoice = checkInput(userChoice);
     let evaluatedComputerChoice = computerChoice;
-    if (evaluatedUserChoice == "scissor" && evaluatedComputerChoice == "paper") {
+    if (evaluatedUserChoice === "scissor" && evaluatedComputerChoice === "paper") {
         console.log("User: " + evaluatedUserChoice);
         console.log("Computer: " + evaluatedComputerChoice);
         console.log("User wins round!");
         userScore++;
-    } else if (evaluatedUserChoice == "paper" && evaluatedComputerChoice == "scissor") {
+    } else if (evaluatedUserChoice === "paper" && evaluatedComputerChoice === "scissor") {
         console.log("User: " + evaluatedUserChoice);
         console.log("Computer: " + evaluatedComputerChoice);
        console.log("Computer wins round!");
         computerScore++;
-    } else if (evaluatedUserChoice == "scissor" && evaluatedComputerChoice == "rock") {
+    } else if (evaluatedUserChoice === "scissor" && evaluatedComputerChoice === "rock") {
         console.log("User: " + evaluatedUserChoice);
         console.log("Computer: " + evaluatedComputerChoice);
        console.log("Computer wins round!");
         computerScore++;
-    } else if (evaluatedUserChoice == "rock" && evaluatedComputerChoice == "scissor") {
+    } else if (evaluatedUserChoice === "rock" && evaluatedComputerChoice === "scissor") {
         console.log("User: " + evaluatedUserChoice);
         console.log("Computer: " + evaluatedComputerChoice);
         console.log("User wins round!");
         userScore++;
-    } else if (evaluatedUserChoice == "rock" && evaluatedComputerChoice == "paper") {
+    } else if (evaluatedUserChoice === "rock" && evaluatedComputerChoice === "paper") {
         console.log("User: " + evaluatedUserChoice);
         console.log("Computer: " + evaluatedComputerChoice);
         console.log("Computer wins round!");
         computerScore++;
-    } else if (evaluatedUserChoice == "paper" && evaluatedComputerChoice == "rock") {
+    } else if (evaluatedUserChoice === "paper" && evaluatedComputerChoice === "rock") {
         console.log("User: " + evaluatedUserChoice);
         console.log("Computer: " + evaluatedComputerChoice);
         console.log("User wins round!");
         userScore++;
-    } else if (evaluatedUserChoice == evaluatedComputerChoice) {
+    } else if (evaluatedUserChoice === evaluatedComputerChoice) {
         console.log("User: " + evaluatedUserChoice);
         console.log("Computer: " + evaluatedComputerChoice);
         console.log("Tie round!");
