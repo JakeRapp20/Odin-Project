@@ -1,25 +1,5 @@
 
-
-// Get user input of rock paper scissors
-
-
-
-function checkInput(choice) {
-
-
-    if (choice === "rock") {
-        return "rock";
-    } else if (choice === "paper") {
-        return "paper";
-    } else if (choice === "scissor") {
-        return "scissor";
-    } else {
-        return alert("Please select rock paper or scissors");
-    }
-}
-
-
-// create random generator for compute to set variable to 1 2 or 3 for choice
+// random generator for compute to set variable to 1 2 or 3 for choice
 
 function calculateComputerChoice() {
     let randomSelectedChoice = Math.floor(Math.random() * 3);
@@ -35,78 +15,97 @@ function calculateComputerChoice() {
     }
 }
 
+// Initalize scores
+
+let userScore = 0;
+let computerScore = 0;
+let gameCounter = 0;
 
 
-// create if statement to evaluate who one
-
+// Evaluates who won, and updates user scores. 
 function playGame(userChoice, computerChoice) {
-    let evaluatedUserChoice = checkInput(userChoice);
     let evaluatedComputerChoice = computerChoice;
-    if (evaluatedUserChoice === "scissor" && evaluatedComputerChoice === "paper") {
-        console.log("User: " + evaluatedUserChoice);
-        console.log("Computer: " + evaluatedComputerChoice);
-        console.log("User wins round!");
+    if (userChoice === "scissor" && evaluatedComputerChoice === "paper") {
         userScore++;
-    } else if (evaluatedUserChoice === "paper" && evaluatedComputerChoice === "scissor") {
-        console.log("User: " + evaluatedUserChoice);
-        console.log("Computer: " + evaluatedComputerChoice);
-       console.log("Computer wins round!");
+        return "User Wins!"
+    } else if (userChoice === "paper" && evaluatedComputerChoice === "scissor") {
         computerScore++;
-    } else if (evaluatedUserChoice === "scissor" && evaluatedComputerChoice === "rock") {
-        console.log("User: " + evaluatedUserChoice);
-        console.log("Computer: " + evaluatedComputerChoice);
-       console.log("Computer wins round!");
+       return "Computer Wins!";
+    } else if (userChoice === "scissor" && evaluatedComputerChoice === "rock") {
         computerScore++;
-    } else if (evaluatedUserChoice === "rock" && evaluatedComputerChoice === "scissor") {
-        console.log("User: " + evaluatedUserChoice);
-        console.log("Computer: " + evaluatedComputerChoice);
-        console.log("User wins round!");
+       return "Computer Wins!";
+    } else if (userChoice === "rock" && evaluatedComputerChoice === "scissor") {
         userScore++;
-    } else if (evaluatedUserChoice === "rock" && evaluatedComputerChoice === "paper") {
-        console.log("User: " + evaluatedUserChoice);
-        console.log("Computer: " + evaluatedComputerChoice);
-        console.log("Computer wins round!");
+        return "User Wins!"
+    } else if (userChoice === "rock" && evaluatedComputerChoice === "paper") {
         computerScore++;
-    } else if (evaluatedUserChoice === "paper" && evaluatedComputerChoice === "rock") {
-        console.log("User: " + evaluatedUserChoice);
-        console.log("Computer: " + evaluatedComputerChoice);
-        console.log("User wins round!");
+        return "Computer Wins!";
+    } else if (userChoice === "paper" && evaluatedComputerChoice === "rock") {
         userScore++;
-    } else if (evaluatedUserChoice === evaluatedComputerChoice) {
-        console.log("User: " + evaluatedUserChoice);
-        console.log("Computer: " + evaluatedComputerChoice);
-        console.log("Tie round!");
+        return "User Wins!"
+    } else if (userChoice === evaluatedComputerChoice) {
+        return "Tie!"
     } else {
         return "error"
     }
 }
-let userScore = 0;
-let computerScore = 0;
 
-let gameCounter = 0;
 
-while (gameCounter <= 4) {
-    let userChoice = prompt("Rock, Paper, or Scissor?").toLowerCase();
-    let computerChoice = calculateComputerChoice()
-    let gameErrorCheck = playGame(userChoice, computerChoice);
-    if (gameErrorCheck != "error") {
-        gameCounter++;
-    } else {
-        console.log("game error round not counted.")
+
+
+// selecting dynamic elements to be displayed when playing game. 
+
+userScoreCount = document.querySelector("#user-score");
+computerScoreCount = document.querySelector("#computer-score");
+displayObject = document.querySelector("#display");
+
+// displays inital values of scores 0
+userScoreCount.textContent = userScore;
+computerScoreCount.textContent = computerScore;
+
+// initalize result to null to satisfy if statement in button. 
+// this will ensure that element is replaced with new result during game execution. 
+let result = null
+
+function handleEvent(e) {
+    if (result) {
+    displayObject.removeChild(result)
     }
-    console.log("User Score: " + userScore);
-    console.log("Computer Score: " + computerScore);
+    input = e.target.innerText.toLowerCase()
+    switch (input) {
+        case "rock":
+            userChoice = input;
+            console.log(userChoice);
+            break;
+        case "paper":
+            userChoice = input;
+            console.log(userChoice);
+            break;
+        case "scissor":
+            userChoice = input;
+            console.log(userChoice);
+            break;
+    }
+    let computerChoice = calculateComputerChoice()
+    result = document.createElement('div')
+    result.textContent = playGame(userChoice, computerChoice);
+    displayObject.appendChild(result);
+    userScoreCount.textContent = userScore;
+    computerScoreCount.textContent = computerScore;
+
 }
-if (userScore > computerScore) {
-    console.log("User wins game!");
-} else if (userScore < computerScore) {
-    console.log("Computer wins game!")
-} else {
-    console.log("Game is a tie! ")
-}
 
-// define computer and user score counter
+// Add listener on all buttons
+buttons = document.querySelectorAll("button");
 
-// depending on who won increase player score counter
+buttons.forEach((button) => {
+    button.addEventListener("click", handleEvent)
+})
 
 
+            
+
+            
+            
+            
+            

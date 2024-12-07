@@ -5,11 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<script src="script.js"></script>
 
-<body>
-
+<body id="body">
+    <nav class="nav">
+        <span class="scores">
+            <h1>User Score: </h1>
+            <h1 id="user-score"></h1>
+        </span>
+        <span class="scores">
+            <h1>Computer Score:</h1>
+            <h1 id="computer-score"></h1>
+        </span>
+    </nav>
+    <div class="display" id="display">
+    </div>
+    <div class="container">
+        <button class="options" id="rock">Rock</button>
+        <button class="options" id="paper">Paper</button>
+        <button class="options" id="scissor">Scissor</button>
+    </div>
 </body>
+
+<script src="script.js"></script>
 
 </html>
