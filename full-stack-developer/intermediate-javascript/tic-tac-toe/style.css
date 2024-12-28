@@ -21,6 +21,8 @@ body {
     border-radius: 30px;
     height: 100%;
     margin: 3rem;
+        font-size: 3rem;
+    font-weight: bold;
 }
 
 .player-active {
@@ -33,6 +35,8 @@ body {
     align-items: center;
     justify-content: center;
     width: 30rem;
+    font-size: 5rem;
+    font-weight: bold;
 }
 
 .game-container {

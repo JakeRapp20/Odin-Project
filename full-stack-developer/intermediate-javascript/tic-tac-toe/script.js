@@ -6,6 +6,12 @@ let gameboard = {
     2: ["02", "12", "22" ],
 }
 
+let gameboardStart = {
+    0: ["00", "10", "20" ],
+    1: ["01", "11", "21" ],
+    2: ["02", "12", "22" ],
+}
+
 let player1Active = true;
 let player2Active = false;
 
@@ -42,6 +48,10 @@ const game = (function () {
             }
         }
     }
+    const winDisplay = (playerName) => {
+        let display = document.querySelector(".display-bar");
+        display.textContent = `${playerName} wins!`;
+    }
     // Manipulates gameboard object based on player input, takes player input to access player.marker value to define X or O. 
     const select = (x, y) => {
         if (gameboard[y][x] !== "X" && gameboard[y][x] !== "O") {
@@ -51,15 +61,20 @@ const game = (function () {
                 gameboard[y][x] = player1.marker;
                 player2Active = true;
                 player1Active = false;
+                if (checkGameStatus(gameboard)) {
+                    winDisplay(player1.name)
+                }
             } else {
                 gameboard[y][x] = player2.marker;                
                 document.querySelector("#player2-bar").classList.add("player-active");
                 document.querySelector("#player1-bar").classList.remove("player-active");
                 player1Active = true;
                 player2Active = false;
+               if (checkGameStatus(gameboard)) {
+                    winDisplay(player2.name)
+                }
             }
         } else return "Already Selected"
-        checkGameStatus(gameboard)
         return game.display(gameboard)
     }
     // checks and sees if an array is all the same, based on the first item in the index
@@ -79,7 +94,7 @@ const game = (function () {
                 verticalLine.push(gameboard[j][i])
             }
             if (game.checkGameArray(horizatonalLine) || game.checkGameArray(verticalLine)) {
-                return console.log("Winner")
+                return true;
             }
         }
         // checks diagnal win by pushing values using rowOffset counter to increment in a diagnal
@@ -91,7 +106,7 @@ const game = (function () {
                 rowOffest += 1;
             }
             if (game.checkGameArray(diagnalLine))
-                return console.log("Winner")
+                return true
         }
         // performs a reverse diagnal push
         for (let y = 0; y < 1; y++) {
@@ -102,17 +117,19 @@ const game = (function () {
                 rowOffest -= 1;
             }
             if (game.checkGameArray(reverseDiagnalLine))
-                return console.log("Winner")
+                return true
         }
     }
     return { display, select, checkGameStatus, checkGameArray, intializeGame}
 })();
 
-const player1 = new player("Jake", "X");
-const player2 = new player("John", "O");
+const player1 = new player("Player1", "X");
+const player2 = new player("Player2", "O");
 
 game.intializeGame();
 game.display(gameboard)
+
+console.log(game.checkGameStatus(gameboard))
 
 
 
